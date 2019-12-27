@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
 import { getRestaurants } from '../../actions';
+import Button from '@material-ui/core/Button';
 import _ from 'lodash';
+import RestaurantCard from './RestaurantCard';
 let index = 0;
 class Restaurant extends React.Component {
   componentDidMount() {
     this.props.getRestaurants();
   }
-  
-  renderRestaurants(){
-    //console.log("data", this.props.restaurants);
+
+  renderRestaurants() {
     return _.map(this.props.restaurants, rest => {
-      return <li key={index++}>
-        { rest }
-      </li>
+      return <RestaurantCard key={rest.id} data={rest} />
     })
   }
 
@@ -23,7 +21,6 @@ class Restaurant extends React.Component {
       <div>
         <div className="text-xs-right">
         </div>
-        <h3>Restaurants</h3>
         <ul className="list-group">{this.renderRestaurants()}</ul>
       </div>
     );

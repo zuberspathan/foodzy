@@ -1,29 +1,32 @@
 import React from "react";
 import "./index.css";
 import App from "./App";
-import Resturant from './components/restaurant/Restaurant';
+import Resturant from './components/restaurant/RestaurantList';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from "./serviceWorker";
 import  store  from './store/store';
 import { Provider } from "react-redux";
+import Menu from './components/menu/MenuList';
+import Post from './components/restaurant/post';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
+//import { createBrowserHistory } from "history";
+//const customHistory = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <div>
         <Switch>
-          <Route path="/" component={Resturant} />
+          <Route path="/post" component={Resturant} />
+          <Route path="/menu/:id" component={Menu}/>
+          <Route path="/" component={Post}/>
         </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

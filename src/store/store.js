@@ -12,4 +12,4 @@ const store  = createStore(
     customCompose(applyMiddleware(...middleware))
 );
 
-export default store;
+export default store;   

@@ -1,13 +1,22 @@
 import React from 'react';
 import './App.css';
-import Restaurant from './components/restaurant/Restaurant';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import Restaurant from './components/restaurant/RestaurantList';
 
 function App() {
   return (
-    <div className="App">
-        <Restaurant/>
-        <p>Hellow</p>
-    </div>
+    <div>
+        <AppBar color="primary" position="static">
+          <Toolbar>
+            <Typography variant="title"
+              color="inherit"
+            >
+              My header
+           </Typography>
+          </Toolbar>
+          {/* <Restaurant/> */}
+        </AppBar>
+      </div>
   );
 }
 
