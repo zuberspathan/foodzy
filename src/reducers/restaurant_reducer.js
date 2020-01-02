@@ -3,7 +3,6 @@
 
 //const restaurant = (state = {}, action) =>  {
 export default function (state = [], action){
-  console.log("actions",action);
   switch (action.type) {
     case 'GET_RESTAURANTS':
       return [...state, ...action.payload.data ];

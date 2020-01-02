@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { getRestaurants } from '../../actions';
 import _ from 'lodash';
 import Menu from './MenuCard';
 
@@ -9,13 +8,8 @@ class MenuList extends Component {
     super(props);
     this.restaurantId = parseInt(props.match.params.id);
   }
-  componentDidMount(){
-    this.props.getRestaurants();
-  }
-
-  componentWillMount() {
-    let restaurant = this.props.restaurants.filter(x => x.id === this.restaurantId)[0];
-    this.setState({menu: restaurant.menu});
+  componentDidMount() {
+    this.restaurant = this.props.restaurants && this.props.restaurants.filter(x => x.id === this.restaurantId)[0] || []
   }
 
   renderMenus() {
@@ -41,4 +35,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getRestaurants})(MenuList);
+export default connect(mapStateToProps)(MenuList);

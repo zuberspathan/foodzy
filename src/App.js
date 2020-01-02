@@ -1,22 +1,23 @@
 import React from 'react';
 import './App.css';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import Restaurant from './components/restaurant/RestaurantList';
+import Restaurant from './components/restaurant/Restaurant';
+import Menu from './components/menu/MenuList';
+import Post from './components/restaurant/post';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div>
-        <AppBar color="primary" position="static">
-          <Toolbar>
-            <Typography variant="title"
-              color="inherit"
-            >
-              My header
-           </Typography>
-          </Toolbar>
-          {/* <Restaurant/> */}
-        </AppBar>
-      </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Restaurant} />
+        <Route path="/menu/:id" component={Menu} />
+        <Route path="/post/:id" component={Post} />
+      </Switch>,
+    </Router>
   );
 }
 
